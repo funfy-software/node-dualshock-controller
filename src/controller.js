@@ -123,13 +123,16 @@ const Controller = function() {
 
     // Used to set controller rumble and light
     this.setExtras = function(data) {
+        try {
+            let buff = controllerConfig.output.defaultBuffer.slice();
 
-        let buff = controllerConfig.output.defaultBuffer.slice();
-
-        Object.keys(data).forEach(k => {
-            buff[indexes[k]] = data[k];
-        });
-        device.write(buff);
+            Object.keys(data).forEach(k => {
+                buff[indexes[k]] = data[k];
+            });
+            device.write(buff);
+        } catch (err) {
+            this.handleException(err);
+        }
     };
 
     //connect to the controller.
