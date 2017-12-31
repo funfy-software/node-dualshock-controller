@@ -131,7 +131,7 @@ const Controller = function() {
             });
             device.write(buff);
         } catch (err) {
-            handleException(err);
+            // handleException(err);
         }
     };
 
