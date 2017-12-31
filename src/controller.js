@@ -79,8 +79,9 @@ const Controller = function() {
         if (this && this.emit) {
             this.emit('error', ex);
         } else {
+            this.emit('error', ex);
             dsutilities.warn(ex);
-            throw (ex);
+            // throw (ex);
         }
     };
 
